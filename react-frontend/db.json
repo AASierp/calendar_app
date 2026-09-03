@@ -1,0 +1,78 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Aaron",
+            "email": "aaron@fake.com",
+            "password": "password1"
+        },
+
+        {
+            "id": 2,
+            "name": "Thomas",
+            "email": "Thomas@fake.com",
+            "password": "password2"
+        },
+
+        {
+            "id": 3,
+            "name": "Matthew",
+            "email": "Matthew@fake.com",
+            "password": "password3"
+        }
+    ],
+
+    "events": [
+        {
+            "id": 1,
+            "creatorId": 1,
+            "title": "BBQ",
+            "description": "A BBQ at Aaron's House",
+            "date": "10-10-2026",
+            "time": "18:00pm",
+            "location": "Aaron's House"
+        },
+        {
+            "id": 2,
+            "creatorId": 2,
+            "title": "Wedding",
+            "description": "Thomas's Wedding",
+            "date": "9-10-2026",
+            "time": "15:00pm",
+            "location": "Wedding Venue"
+        },
+        {
+            "id": 3,
+            "creatorId": 3,
+            "title": "Pool Party",
+            "description": "A pool party at Matthew's House",
+            "date": "9-2-2026",
+            "time": "13:00",
+            "location": "Matthew's House"
+        }
+    ],
+
+    "invitations": [
+        {
+            "id": 1,
+            "eventId": 1,
+            "userId": 2,
+            "status": "pending"
+        },
+        {
+            "id": 2,
+            "eventId": 3,
+            "userId": 2,
+            "status": "accepted"
+        },
+        {
+            "id": 3,
+            "eventId": 2,
+            "userId": 3,
+            "status": "declined"
+        }
+        
+        
+    ]
+
+}
