@@ -1,3 +1,5 @@
+
+
 {
     "users": [
         {
@@ -29,7 +31,7 @@
             "title": "BBQ",
             "description": "A BBQ at Aaron's House",
             "date": "10-10-2026",
-            "time": "18:00pm",
+            "time": "18:00",
             "location": "Aaron's House"
         },
         {
@@ -38,7 +40,7 @@
             "title": "Wedding",
             "description": "Thomas's Wedding",
             "date": "9-10-2026",
-            "time": "15:00pm",
+            "time": "15:00",
             "location": "Wedding Venue"
         },
         {
