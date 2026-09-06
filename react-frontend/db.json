@@ -27,15 +27,6 @@
   ],
   "events": [
     {
-      "id": 1,
-      "creatorId": 1,
-      "title": "BBQ",
-      "description": "A BBQ at Aaron's House",
-      "date": "2026-10-10",
-      "time": "18:00",
-      "location": "Aaron's House"
-    },
-    {
       "id": 2,
       "creatorId": 2,
       "title": "Wedding",
@@ -52,26 +43,53 @@
       "date": "2026-09-02",
       "time": "13:00",
       "location": "Matthew's House"
+    },
+    {
+      "creatorId": 1,
+      "title": "New Event",
+      "description": "This is a New Event",
+      "date": "2026-10-12",
+      "time": "18:00",
+      "location": "Aaron's House",
+      "id": 4
+    },
+    {
+      "creatorId": 1,
+      "title": "House Warming",
+      "description": "A house warming party",
+      "date": "2026-12-01",
+      "time": "18:00",
+      "location": "Aaron's House",
+      "id": 5
+    },
+    {
+      "creatorId": 1,
+      "title": "Dog Park",
+      "description": "Local dog meet up",
+      "date": "2026-10-02",
+      "time": "10:00",
+      "location": "Central Dog Park",
+      "id": 6
     }
   ],
   "invitations": [
     {
-      "id": 1,
-      "eventId": 1,
-      "userId": 2,
-      "status": "pending"
-    },
-    {
       "id": 2,
       "eventId": 3,
       "userId": 2,
-      "status": "accepted"
+      "status": "declined"
     },
     {
       "id": 3,
       "eventId": 2,
       "userId": 3,
       "status": "declined"
+    },
+    {
+      "id": 4,
+      "eventId": 3,
+      "userId": 1,
+      "status": "accepted"
     }
   ]
 }

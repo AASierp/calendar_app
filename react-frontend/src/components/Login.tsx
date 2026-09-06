@@ -1,7 +1,7 @@
 import { getUsers } from "../services/userServices"
 import { useState } from "react";
 import { type User } from "../types/types";
-import SignUp from "./signup";
+import SignUp from "./SignUp";
 import NavBar from "./NavBar";
 
 type LoginProps = {

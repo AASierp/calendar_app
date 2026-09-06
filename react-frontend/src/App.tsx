@@ -27,8 +27,8 @@ function App() {
     <>
       {isLoggedIn ?
       <>
-        <DashBoard />
-        <LogOut switchLogin={switchLogin}/>
+        <LogOut switchLogin = {switchLogin}/>
+        <DashBoard user = {user}/>
       </>
       :
         <Login switchLogin={switchLogin} liftUser = {liftUser} />

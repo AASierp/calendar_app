@@ -50,5 +50,8 @@ export type NewInvitation = Omit<Invitation, "id">
 export type UpdatedInvitation = Pick<Invitation, 'status'>
 
 
-
+export type Attendee = {
+    name: string
+    status: "pending" | "accepted" | "declined"
+}
 
