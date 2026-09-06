@@ -17,12 +17,6 @@
       "name": "Matthew",
       "email": "Matthew@fake.com",
       "password": "password3"
-    },
-    {
-      "name": "Aaron Sierp",
-      "email": "aaronsierp@gmail.com",
-      "password": "password123",
-      "id": 4
     }
   ],
   "events": [
@@ -43,15 +37,6 @@
       "date": "2026-09-02",
       "time": "13:00",
       "location": "Matthew's House"
-    },
-    {
-      "creatorId": 1,
-      "title": "New Event",
-      "description": "This is a New Event",
-      "date": "2026-10-12",
-      "time": "18:00",
-      "location": "Aaron's House",
-      "id": 4
     },
     {
       "creatorId": 1,
@@ -89,7 +74,19 @@
       "id": 4,
       "eventId": 3,
       "userId": 1,
-      "status": "accepted"
+      "status": "declined"
+    },
+    {
+      "eventId": 5,
+      "userId": 2,
+      "status": "pending",
+      "id": 5
+    },
+    {
+      "eventId": 5,
+      "userId": 3,
+      "status": "pending",
+      "id": 6
     }
   ]
 }

@@ -11,10 +11,11 @@ type EventDetailsProps = {
     currentEvent: CalendarEvent
     setCurrentEvent: (event: CalendarEvent | null) => void
     refreshState: () => void
+    refresh: number
 }
 
 
-function EventDetails({currentEvent, setCurrentEvent, refreshState}: EventDetailsProps){
+function EventDetails({currentEvent, setCurrentEvent, refreshState, refresh}: EventDetailsProps){
     const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState(currentEvent.title);
     const [description, setDescription] = useState(currentEvent.description);
@@ -61,6 +62,7 @@ function EventDetails({currentEvent, setCurrentEvent, refreshState}: EventDetail
 
         await postInvitation(invitation);
         setInvitee("")
+        refreshState();
     }
 
     useEffect(() => {
@@ -80,7 +82,7 @@ function EventDetails({currentEvent, setCurrentEvent, refreshState}: EventDetail
         setAttendess(attendees);
     }
         displayAttendees()
-    }, [])
+    }, [refresh])
 
     
 
@@ -113,12 +115,13 @@ function EventDetails({currentEvent, setCurrentEvent, refreshState}: EventDetail
             <div>
                 <button onClick={sendInvitation}>Invite</button>
                 <select value = {invitee} onChange={(e) => setInvitee(e.target.value)}>
-                    {users.map((user: User) => <option>{user.name}</option>)}
+                    <option value="" disabled>Select User</option>
+                    {users.map((user: User) => <option value={user.id}>{user.name}</option>)}
                 </select>
             </div>
             <div>
                 {attendees.map((attendee) =>
-                <div> 
+                <div key={attendee.name}> 
                     <p>{attendee.name}</p>
                     <p>{attendee.status}</p>
                 </div>
