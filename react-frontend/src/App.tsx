@@ -25,7 +25,7 @@ function App() {
 
   return (
     <>
-      {isLoggedIn ?
+      {isLoggedIn && user ?
       <>
         <LogOut switchLogin = {switchLogin}/>
         <DashBoard user = {user}/>
