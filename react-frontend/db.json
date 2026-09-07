@@ -55,6 +55,24 @@
       "time": "10:00",
       "location": "Central Dog Park",
       "id": 6
+    },
+    {
+      "creatorId": 1,
+      "title": "Golfing Trip",
+      "description": "The boys are going golfing",
+      "date": "2026-11-25",
+      "time": "09:00",
+      "location": "Gold Course",
+      "id": 7
+    },
+    {
+      "creatorId": 1,
+      "title": "DND",
+      "description": "a dnd sesh",
+      "date": "2027-11-12",
+      "time": "20:00",
+      "location": "My House",
+      "id": 8
     }
   ],
   "invitations": [
@@ -62,7 +80,7 @@
       "id": 2,
       "eventId": 3,
       "userId": 2,
-      "status": "declined"
+      "status": "accepted"
     },
     {
       "id": 3,
@@ -74,12 +92,12 @@
       "id": 4,
       "eventId": 3,
       "userId": 1,
-      "status": "declined"
+      "status": "accepted"
     },
     {
       "eventId": 5,
       "userId": 2,
-      "status": "pending",
+      "status": "accepted",
       "id": 5
     },
     {
@@ -87,6 +105,12 @@
       "userId": 3,
       "status": "pending",
       "id": 6
+    },
+    {
+      "eventId": 7,
+      "userId": 2,
+      "status": "accepted",
+      "id": 7
     }
   ]
 }

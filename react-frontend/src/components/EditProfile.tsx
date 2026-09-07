@@ -4,16 +4,14 @@ import { updateUser } from "../services/userServices";
 
 type EditProfileProps = {
     user: User
-    refreshState: () => void
+    liftUser: (user: User) => void
 }
 
-function EditProfile( {user, refreshState}: EditProfileProps ){
+function EditProfile( {user, liftUser}: EditProfileProps ){
     
     const [name, setName] = useState(user.name);
     const [email, setEmail] = useState(user.email);
     const [password, setPassword] = useState(user.password);
-
-    console.log(user)
 
     async function UpdateProfile(e: React.SubmitEvent) {
         e.preventDefault()
@@ -25,7 +23,14 @@ function EditProfile( {user, refreshState}: EditProfileProps ){
         }
 
         await updateUser(user.id, profileUpdate)
-        refreshState()
+     
+        const userToLift: User = {
+            id: user.id,
+            name: name,
+            email: email,
+            password: password
+        }
+        liftUser(userToLift)
     }
 
 

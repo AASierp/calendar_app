@@ -4,13 +4,14 @@ import EventList from "./EventList"
 import { useState } from "react"
 import EventDetails from "./EventDetails"
 import InvitationList from "./InvitationList"
-import EditProfile from "./editProfile"
+import EditProfile from "./EditProfile"
 
 type DashBoardProps = {
     user: User
+    liftUser: (user: User) => void
 }
 
-function DashBoard( { user }: DashBoardProps  ){
+function DashBoard( { user, liftUser }: DashBoardProps  ){
 const [refresh, setRefresh] = useState(0);
 const [currentEvent, setCurrentEvent] = useState<CalendarEvent | null>(null)
 
@@ -32,7 +33,7 @@ const [currentEvent, setCurrentEvent] = useState<CalendarEvent | null>(null)
                 
                 {currentEvent ?
                 <div>
-                    <EventDetails currentEvent = {currentEvent} setCurrentEvent = {setCurrentEvent} refreshState = {refreshState} refresh = {refresh}/>
+                    <EventDetails user={user} currentEvent = {currentEvent} setCurrentEvent = {setCurrentEvent} refreshState = {refreshState} refresh = {refresh}/>
                 </div>
                 :
                 <>
@@ -46,7 +47,7 @@ const [currentEvent, setCurrentEvent] = useState<CalendarEvent | null>(null)
                 } 
                 <div>
                     <CreateEvent user={user} refreshState = { refreshState }/>
-                    <EditProfile user={user} refreshState = { refreshState }/>
+                    <EditProfile user={user} liftUser = {liftUser}/>
                 </div>
             </div>
         </>

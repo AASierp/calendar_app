@@ -4,18 +4,20 @@ import { type UpdatedCalendarEvent } from "../types/types";
 import { updateEvent, deleteEvent } from "../services/eventServices";
 import { getUsers } from "../services/userServices";
 import { type NewInvitation } from "../types/types";
-import { getInvitations, postInvitation } from "../services/invitationServices";
+import { deleteInvitation, getInvitations, postInvitation } from "../services/invitationServices";
 import { type Attendee } from "../types/types";
+
 
 type EventDetailsProps = {
     currentEvent: CalendarEvent
     setCurrentEvent: (event: CalendarEvent | null) => void
     refreshState: () => void
     refresh: number
+    user: User
 }
 
 
-function EventDetails({currentEvent, setCurrentEvent, refreshState, refresh}: EventDetailsProps){
+function EventDetails({currentEvent, setCurrentEvent, refreshState, refresh, user}: EventDetailsProps){
     const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState(currentEvent.title);
     const [description, setDescription] = useState(currentEvent.description);
@@ -24,7 +26,8 @@ function EventDetails({currentEvent, setCurrentEvent, refreshState, refresh}: Ev
     const [location, setLocation] = useState(currentEvent.location);
     const [users, setUsers] = useState<User[]>([])
     const [invitee, setInvitee] = useState("");
-    const [attendees, setAttendess] = useState<Attendee[]>([])
+    const [attendees, setAttendees] = useState<Attendee[]>([])
+    const [message, setMessage] = useState("")
 
     
 
@@ -46,6 +49,11 @@ function EventDetails({currentEvent, setCurrentEvent, refreshState, refresh}: Ev
     }
 
     async function deleteThisEvent(){
+        const inviteList = await getInvitations()
+        const ids = inviteList.filter((invite) => invite.eventId === currentEvent.id)
+        for(const id of ids){
+            await deleteInvitation(id.id);
+        }
         await deleteEvent(currentEvent.id)
         setCurrentEvent(null);
         refreshState();
@@ -54,16 +62,31 @@ function EventDetails({currentEvent, setCurrentEvent, refreshState, refresh}: Ev
 
     async function sendInvitation(){
 
-        const invitation: NewInvitation = {
-            eventId: currentEvent.id,
-            userId: Number(invitee),
-            status: "pending"
-        }
+            if(!invitee){
+                setMessage("Invitee not selected")
+                return
+            }
 
-        await postInvitation(invitation);
+            const invitation: NewInvitation = {
+                eventId: currentEvent.id,
+                userId: Number(invitee),
+                status: "pending"
+            }
+        
+            const inviteList = await getInvitations()
+            for(const invite of inviteList){
+                if (invite.eventId === currentEvent.id && invite.userId === Number(invitee)){
+                    setMessage("That user already has an invitation to this event.");
+                    return
+                    }
+                }
+
+        await postInvitation(invitation)
+        setMessage("")
         setInvitee("")
         refreshState();
     }
+    
 
     useEffect(() => {
         async function displayAttendees(){
@@ -79,10 +102,10 @@ function EventDetails({currentEvent, setCurrentEvent, refreshState, refresh}: Ev
                 status: invite.status
             };
         });
-        setAttendess(attendees);
+        setAttendees(attendees);
     }
         displayAttendees()
-    }, [refresh])
+    }, [refresh, currentEvent.id])
 
     
 
@@ -93,12 +116,13 @@ function EventDetails({currentEvent, setCurrentEvent, refreshState, refresh}: Ev
         async function getUsersList(){
 
             const userList: User[]  = await getUsers()
-            setUsers(userList)
+            const userListWithoutCreator = userList.filter((user) => user.id !== currentEvent.creatorId)
+            setUsers(userListWithoutCreator)
         }
 
         getUsersList()
 
-    }, [])
+    }, [currentEvent.creatorId])
 
 
     return(
@@ -108,24 +132,29 @@ function EventDetails({currentEvent, setCurrentEvent, refreshState, refresh}: Ev
             <p>{currentEvent.date}</p>
             <p>{currentEvent.time}</p>
             <p>{currentEvent.location}</p>
-            <button onClick={() => setEditMode(true)}>Edit Mode</button>
-            <button onClick={()=> {deleteThisEvent()}}>Delete</button>
-            <button onClick={() => setCurrentEvent(null)}>Close</button>
-            
+            {user.id === currentEvent.creatorId ?
             <div>
+                <button onClick={() => setEditMode(true)}>Edit Mode</button>
+                <button onClick={()=> {deleteThisEvent()}}>Delete</button>
                 <button onClick={sendInvitation}>Invite</button>
                 <select value = {invitee} onChange={(e) => setInvitee(e.target.value)}>
                     <option value="" disabled>Select User</option>
-                    {users.map((user: User) => <option value={user.id}>{user.name}</option>)}
+                    {users.map((user: User) => <option key={user.id} value={user.id}>{user.name}</option>)}
                 </select>
+                {message && <p>{message}</p>}
             </div>
+            :
+            <div></div>
+            }
             <div>
+                <h2>RSVPs</h2>
                 {attendees.map((attendee) =>
                 <div key={attendee.name}> 
                     <p>{attendee.name}</p>
                     <p>{attendee.status}</p>
                 </div>
                 )}
+                <button onClick={() => setCurrentEvent(null)}>Close</button>
             </div>
         
             {editMode &&
@@ -150,5 +179,6 @@ function EventDetails({currentEvent, setCurrentEvent, refreshState, refresh}: Ev
         </div>
     )
 }
+
 
 export default EventDetails

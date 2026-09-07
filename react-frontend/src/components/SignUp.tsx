@@ -19,8 +19,8 @@ function SignUp( {activateSignUp}: SignUpProps){
         setMessage("");
 
         const newUser: NewUser = {
-            name: name,
-            email: email,
+            name: name.trim(),
+            email: email.trim(),
             password: password
         }
 
@@ -71,11 +71,11 @@ function SignUp( {activateSignUp}: SignUpProps){
             <fieldset>
                 <legend>Sign Up</legend>
                 <label htmlFor="name">Name:</label>
-                <input type="text" id="name"  value={name} onChange={(e) => {setName(e.target.value)}} />
+                <input required type="text" id="name"  value={name} onChange={(e) => {setName(e.target.value)}} />
                 <label htmlFor="email">Email:</label>
-                <input type="text" id="email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
+                <input required type="email" id="email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
                 <label htmlFor="password">Password:</label>
-                <input type="password" id="password"  value={password} onChange={(e) => {setPassword(e.target.value)}} />
+                <input required type="password" id="password"  value={password} onChange={(e) => {setPassword(e.target.value)}} />
                 <button type="submit">Submit</button>
                 {message && <p>{message}</p>}
             </fieldset>

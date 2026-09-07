@@ -46,3 +46,17 @@ export async function updateInvitation(inviteId: number, updatedInvitation: Upda
         console.error(error);
     }
 }
+
+export async function deleteInvitation(id: number): Promise<void>{
+
+    try{
+        const response = await fetch(`${URL}/${id}`, {
+            method: "DELETE",
+        })
+        if(!response.ok){
+            throw new Error("Event could not be deleted");
+        }
+    }catch(error){
+        console.error(error);
+    }
+}
