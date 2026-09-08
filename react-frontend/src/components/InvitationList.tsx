@@ -46,7 +46,7 @@ function InvitationList({ user, refreshState, refresh}: invitationProps){
         <>
             <h2>Your Invitations</h2>
        
-                
+                {!filteredUserInvitations.length && <p style={{textAlign:"center"}}>You do not have any invitations.</p>}
                 {filteredUserInvitations.map((invite) => {const event = events.find((event) => event.id === invite.eventId); 
                     return (
                         

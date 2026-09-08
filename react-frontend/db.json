@@ -8,7 +8,7 @@
     },
     {
       "id": 2,
-      "name": "Tom",
+      "name": "Thomas",
       "email": "Thomas@fake.com",
       "password": "password2"
     },
@@ -17,6 +17,12 @@
       "name": "Matthew",
       "email": "Matthew@fake.com",
       "password": "password3"
+    },
+    {
+      "name": "Aaron Sierp",
+      "email": "aaronsierp@gmail.com",
+      "password": "password",
+      "id": 4
     }
   ],
   "events": [
@@ -62,7 +68,7 @@
       "description": "The boys are going golfing",
       "date": "2026-11-25",
       "time": "09:00",
-      "location": "Gold Course",
+      "location": "Golf Course",
       "id": 7
     },
     {

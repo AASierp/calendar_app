@@ -1,8 +1,6 @@
-# Calendar Application
+# Calendar/Event Management Application
 
-A React and TypeScript calendar application that allows registered users to create and manage events, invite other users, respond to invitations, and view their upcoming schedule.
-
-This project was created as a frontend assessment using React, TypeScript, Vite, and JSON Server.
+A ReactTS with vite event management application that allows users to create and manage events, invitations to events, and view their upcoming schedule.
 
 ## Features
 
@@ -16,14 +14,15 @@ This project was created as a frontend assessment using React, TypeScript, Vite,
 
 * Create events with:
 
-  * Title
-  * Description
-  * Date
-  * Time
-  * Location
+* Title
+* Description
+* Date
+* Time
+* Location
+
 * View event details
-* Edit events created by the logged-in user
-* Delete events created by the logged-in user
+* Edit events created by the user 
+* Delete events created by the user
 * View events created by the user as well as events they have accepted
 
 ### Invitations and RSVP
@@ -53,6 +52,7 @@ This project was created as a frontend assessment using React, TypeScript, Vite,
 The application separates UI components, TypeScript types, and HTTP request logic into their own areas.
 
 * `components` — React components used throughout the application
+* `pages` - distinct page views tha combined components
 * `services` — functions responsible for communicating with JSON Server
 * `types` — shared TypeScript types
 * `db.json` — persistent application data used by JSON Server
@@ -71,7 +71,7 @@ Stores event information and the ID of the user who created the event.
 
 ### Invitations
 
-Connects a registered user to an event and stores their RSVP status as:
+Connects a user to an event and stores their RSVP status as:
 
 * `pending`
 * `accepted`
@@ -118,8 +118,6 @@ The application was designed around a simple dashboard that gives the user immed
 * View and manage events
 * Review invitations
 * Create new events
-
-The interface uses a consistent frosted-glass visual style with a green gradient background and shared styling across forms and event cards.
 
 ## Planning
 

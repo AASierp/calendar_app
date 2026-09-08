@@ -63,7 +63,7 @@ function EventList( { user, refresh, liftEvent }: EventListProps){
                 {message && <p>{message}</p>}
             </fieldset>
         </form>
-        {userEvents.length === 0 && <p>You have no current events</p>}
+        {userEvents.length === 0 && <p style={{textAlign: "center"}}>You do not have any events.</p>}
         {!filteredEvents ?
         userEvents.map((event) =>
                 <div className="event-card" key={event.id}>

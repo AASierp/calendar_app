@@ -46,18 +46,22 @@ function Login( { switchLogin, liftUser }: LoginProps ){
                 <SignUp activateSignUp = {activateSignUp}/>
             </div>
             :
-            <form className="form-card login">
-                <fieldset>
-                    <legend>User Login</legend>
-                    {message && <p>{message}</p>}
-                    <label>Email: </label>
-                    <input type="text" value={email} onChange= {(e) => {setEmail(e.target.value)}}/>
-                    <label>Password: </label>
-                    <input type="password" value={password} onChange= {(e) => {setPassword(e.target.value)}}/>
-                    <button type="button" onClick = {checkUserAuth}>Login</button>
-                    <button type="button" onClick={activateSignUp}>Sign Up</button>
-                </fieldset>
-            </form>
+            <div className="login-container">
+                <h2>Welcome To ME</h2>
+                <p style={{textAlign:"center"}}>A Calendar & Events Management Application</p>
+                <form className="form-card login">
+                    <fieldset>
+                        <legend>User Login</legend>
+                        {message && <p>{message}</p>}
+                        <label>Email: </label>
+                        <input type="text" value={email} placeholder="Your Email Here..." onChange= {(e) => {setEmail(e.target.value)}}/>
+                        <label>Password: </label>
+                        <input type="password" value={password} placeholder="Your Password Here..." onChange= {(e) => {setPassword(e.target.value)}}/>
+                        <button type="button" onClick = {checkUserAuth}>Login</button>
+                        <button type="button" onClick={activateSignUp}>Sign Up</button>
+                    </fieldset>
+                </form>
+            </div>
             }
         </div>
     )
