@@ -49,7 +49,9 @@ function EventList( { user, refresh, liftEvent }: EventListProps){
 
     return(
        <>
-        <form onSubmit={filterEvents}>
+        
+        <h2>Your Events</h2>
+        <form onSubmit={filterEvents} className="form-card">
             <fieldset>
                 <legend>Filter Events by Date</legend>
                 <label>Start Date: </label>
@@ -61,13 +63,12 @@ function EventList( { user, refresh, liftEvent }: EventListProps){
                 {message && <p>{message}</p>}
             </fieldset>
         </form>
-        <h2>Your Events Events: </h2>
         {userEvents.length === 0 && <p>You have no current events</p>}
         {!filteredEvents ?
         userEvents.map((event) =>
                 <div className="event-card" key={event.id}>
-                    <p>{event.title}</p>
-                    <p>{event.description}</p>
+                    <h3 style={{color: "#d9b44a"}}>{event.title}</h3>
+                    <p>Activity: {event.description}</p>
                     <p>Date: {event.date}</p>
                     <p>Time: {event.time}</p>
                     <p>Location: {event.location}</p>
@@ -77,8 +78,8 @@ function EventList( { user, refresh, liftEvent }: EventListProps){
             :
             filteredEvents.map((event) =>
                 <div className="event-card" key={event.id}>
-                    <p>{event.title}</p>
-                    <p>{event.description}</p>
+                    <h3 style={{color: "#d9b44a"}}>{event.title}</h3>
+                    <p>Activity: {event.description}</p>
                     <p>Date: {event.date}</p>
                     <p>Time: {event.time}</p>
                     <p>Location: {event.location}</p>

@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import './App.css'
-import Login from "./components/Login";
-import DashBoard from './components/DashBoard';
+import Login from './pages/Login';
+import DashBoard from './pages/DashBoard';
 import LogOut from './components/LogOut';
 import type { User } from './types/types';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -26,13 +27,18 @@ function App() {
   return (
     <>
       {isLoggedIn && user ?
-      <>
-        <LogOut switchLogin = {switchLogin}/>
-        <DashBoard user = {user} liftUser = {liftUser}/>
-      </>
+      <div>
+        <div>
+          <LogOut switchLogin = {switchLogin}/>
+        </div>
+        <div>
+          <DashBoard user = {user} liftUser = {liftUser}/>
+        </div>
+      </div>
       :
         <Login switchLogin={switchLogin} liftUser = {liftUser} />
       }
+      <Footer />
     </>
   )
 }

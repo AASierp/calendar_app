@@ -2,7 +2,7 @@ import { getUsers } from "../services/userServices"
 import { useState } from "react";
 import { type User } from "../types/types";
 import SignUp from "./SignUp";
-import NavBar from "./NavBar";
+
 
 type LoginProps = {
     switchLogin: () => void
@@ -40,14 +40,13 @@ function Login( { switchLogin, liftUser }: LoginProps ){
 
 
     return(
-        <div>
-            <NavBar activateSignUp={activateSignUp}/>
+        <div className="sign-up-container">
             {signUpIsActive ?
             <div>
                 <SignUp activateSignUp = {activateSignUp}/>
             </div>
             :
-            <form className="form-card">
+            <form className="form-card login">
                 <fieldset>
                     <legend>User Login</legend>
                     {message && <p>{message}</p>}
@@ -56,6 +55,7 @@ function Login( { switchLogin, liftUser }: LoginProps ){
                     <label>Password: </label>
                     <input type="password" value={password} onChange= {(e) => {setPassword(e.target.value)}}/>
                     <button type="button" onClick = {checkUserAuth}>Login</button>
+                    <button type="button" onClick={activateSignUp}>Sign Up</button>
                 </fieldset>
             </form>
             }

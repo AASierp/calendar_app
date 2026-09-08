@@ -43,22 +43,25 @@ function CreateEvent( { user, refreshState}: CreateEventProps){
     }
 
     return(
-        <form className="form-card" onSubmit={createAndPostEvent}>
-            <fieldset>
-                <legend>Create Event</legend>
-                <label>Title:</label>
-                <input required type="text" value={title} onChange={(event) => setTitle(event.target.value)}/>
-                <label>Description:</label>
-                <textarea value={description} onChange={(event) => setDescription(event.target.value)}/>
-                <label>Date:</label>
-                <input required type="date" value={date} onChange={(event) => setDate(event.target.value)}/>
-                <label>Time:</label>
-                <input required type="time" value={time} onChange={(event) => setTime(event.target.value)}/>
-                <label>Location</label>
-                <input required type="text" value={location} onChange={(event) => setLocation(event.target.value)}/>
-                <button type="submit">Create Event</button>
-            </fieldset>
-        </form>
+        <>
+            <h2>Create Event & Edit Profile</h2>
+            <form className="form-card" onSubmit={createAndPostEvent}>
+                <fieldset>
+                    <legend>Create Event</legend>
+                    <label>Title:</label>
+                    <input required type="text" value={title} onChange={(event) => setTitle(event.target.value)}/>
+                    <label>Description:</label>
+                    <textarea value={description} onChange={(event) => setDescription(event.target.value)}/>
+                    <label>Date:</label>
+                    <input required type="date" value={date} onChange={(event) => setDate(event.target.value)}/>
+                    <label>Time:</label>
+                    <input required type="time" value={time} onChange={(event) => setTime(event.target.value)}/>
+                    <label>Location</label>
+                    <input required type="text" value={location} onChange={(event) => setLocation(event.target.value)}/>
+                    <button type="submit">Create Event</button>
+                </fieldset>
+            </form>
+        </>
     )
 }
 

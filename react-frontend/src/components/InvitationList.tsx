@@ -43,25 +43,30 @@ function InvitationList({ user, refreshState, refresh}: invitationProps){
 
 
     return(
-        <div className="event-card">
-            {filteredUserInvitations.map((invite) => {const event = events.find((event) => event.id === invite.eventId); 
-                return (
-                    <div>
-                        <h2>Your Invitations</h2>
-                        <div key={invite.id}>
-                            <p>{event?.title}</p>
-                            <p>{event?.date}</p>
-                            <p>{invite.status}</p>
-                            <p>RSVP</p>
+        <>
+            <h2>Your Invitations</h2>
+       
+                
+                {filteredUserInvitations.map((invite) => {const event = events.find((event) => event.id === invite.eventId); 
+                    return (
+                        
+                        <div key={invite.id} className="event-card">
+                            <h3 style={{color: "#d9b44a"}}>{event?.title}</h3>
+                            <p>Date: {event?.date}</p>
+                            <p>Time: {event?.time}</p>
+                            <p>Location: {event?.location}</p>
+                            <p>Status: {invite.status}</p>
+                            <p>=============</p>
+                            <p style={{color: "#d9b44a"}}>RSVP</p>
                             <button onClick={() => {updateInviteStatus(invite, "accepted")}}>Accept</button>
                             <button onClick={() => {updateInviteStatus(invite, "declined")}}>Decline</button>
                         </div>
-                    </div>
+                
+                    );
 
-                );
-
-            })}
-        </div>
+                })}
+           
+        </>
     )
 }
 

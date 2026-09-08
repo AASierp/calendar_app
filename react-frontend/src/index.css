@@ -6,20 +6,38 @@ html,
 body,
 #root {
   margin: 5px;
-  min-height: 100%;
+  min-height: 100vh;
+  color: #d9b44a
 }
 
 body {
   min-width: 320px;
   font-family: Arial, Helvetica, sans-serif;
   /* background: linear-gradient(180deg, rgba(33,43,39,0.82), transparent), #202d1f; */
-  background: ivory;
-  color: #222;
+  background: linear-gradient(
+    to bottom,
+    #2f4a24,
+    #151c19
+  );
+
+  min-height: 100vh
 }
 
-button,
+/* button,
 input,
 textarea,
 select {
   font: inherit;
-}
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  
+  font-size: 1rem;
+} */

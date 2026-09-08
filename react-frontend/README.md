@@ -1,75 +1,126 @@
-# React + TypeScript + Vite
+# Calendar Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React and TypeScript calendar application that allows registered users to create and manage events, invite other users, respond to invitations, and view their upcoming schedule.
 
-Currently, two official plugins are available:
+This project was created as a frontend assessment using React, TypeScript, Vite, and JSON Server.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+### Account Management
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Create a new account with a name, email, and password
+* Log in and log out
+* Edit profile information
 
-## Expanding the ESLint configuration
+### Event Management
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* Create events with:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+  * Title
+  * Description
+  * Date
+  * Time
+  * Location
+* View event details
+* Edit events created by the logged-in user
+* Delete events created by the logged-in user
+* View events created by the user as well as events they have accepted
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Invitations and RSVP
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* Invite registered users to an event
+* Prevent duplicate invitations
+* Accept or decline invitations
+* View invitation details including date, time, and location
+* View attendee RSVP status for an event
 
+### Schedule
+
+* View the logged-in user's events
+* Filter events using a start and end date
+
+## Technologies
+
+* React
+* TypeScript
+* Vite
+* HTML
+* CSS
+* JSON Server
+
+## Project Structure
+
+The application separates UI components, TypeScript types, and HTTP request logic into their own areas.
+
+* `components` — React components used throughout the application
+* `services` — functions responsible for communicating with JSON Server
+* `types` — shared TypeScript types
+* `db.json` — persistent application data used by JSON Server
+
+## Data Model
+
+The application uses three primary data types:
+
+### Users
+
+Stores account information including name, email, and password.
+
+### Events
+
+Stores event information and the ID of the user who created the event.
+
+### Invitations
+
+Connects a registered user to an event and stores their RSVP status as:
+
+* `pending`
+* `accepted`
+* `declined`
+
+## Running the Application
+
+Install dependencies:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Start the React development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run dev
 ```
+
+The frontend will normally run at:
+
+```text
+http://localhost:5173
+```
+
+In a second terminal, start JSON Server:
+
+```bash
+npm run server
+```
+
+JSON Server runs at:
+
+```text
+http://localhost:3001
+```
+
+Both servers must be running for the application to function correctly.
+
+## Design
+
+The application was designed around a simple dashboard that gives the user immediate access to their three primary tasks:
+
+* View and manage events
+* Review invitations
+* Create new events
+
+The interface uses a consistent frosted-glass visual style with a green gradient background and shared styling across forms and event cards.
+
+## Planning
+
+Planning documentation for the application is included in the repository and was used to define the application's components, data structure, and major user flows before and during development.

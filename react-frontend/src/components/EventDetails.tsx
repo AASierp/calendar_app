@@ -126,57 +126,64 @@ function EventDetails({currentEvent, setCurrentEvent, refreshState, refresh, use
 
 
     return(
-        <div className="event-card">
-            <p>{currentEvent.title}</p>
-            <p>{currentEvent.description}</p>
-            <p>{currentEvent.date}</p>
-            <p>{currentEvent.time}</p>
-            <p>{currentEvent.location}</p>
-            {user.id === currentEvent.creatorId ?
-            <div>
-                <button onClick={() => setEditMode(true)}>Edit Mode</button>
-                <button onClick={()=> {deleteThisEvent()}}>Delete</button>
-                <button onClick={sendInvitation}>Invite</button>
-                <select value = {invitee} onChange={(e) => setInvitee(e.target.value)}>
-                    <option value="" disabled>Select User</option>
-                    {users.map((user: User) => <option key={user.id} value={user.id}>{user.name}</option>)}
-                </select>
-                {message && <p>{message}</p>}
-            </div>
-            :
-            <div></div>
-            }
-            <div>
-                <h2>RSVPs</h2>
-                {attendees.map((attendee) =>
-                <div key={attendee.name}> 
-                    <p>{attendee.name}</p>
-                    <p>{attendee.status}</p>
+        <>
+            {!editMode ?
+            <>
+            <h2>Event Details:</h2>
+            <div className="event-card">
+                <p style={{color: "#d9b44a"}}>Event: {currentEvent.title}</p>
+                <p>Activity: {currentEvent.description}</p>
+                <p>Date: {currentEvent.date}</p>
+                <p>time: {currentEvent.time}</p>
+                <p>Location: {currentEvent.location}</p>
+                {user.id === currentEvent.creatorId ?
+                <div>
+                    <button onClick={() => setEditMode(true)}>Edit Mode</button>
+                    <button onClick={()=> {deleteThisEvent()}}>Delete</button>
+                    
+                    <select value = {invitee} onChange={(e) => setInvitee(e.target.value)}>
+                        <option value="" disabled>Select User to Invite</option>
+                        {users.map((user: User) => <option key={user.id} value={user.id}>{user.name}</option>)}
+                    </select>
+                    <button onClick={sendInvitation}>Invite</button>
+                    {message && <p>{message}</p>}
                 </div>
-                )}
-                <button onClick={() => setCurrentEvent(null)}>Close</button>
-            </div>
-        
-            {editMode &&
-            <form className="form-card" onSubmit={updateCalendarEvent}>
-                <fieldset>
-                    <legend>Edit Event</legend>
-                    <label>Title</label>
-                    <input required type="text" value={title} onChange={(event) => setTitle(event.target.value)}/>
-                    <label>Description:</label>
-                    <textarea value={description} onChange={(event) => setDescription(event.target.value)}/>
-                    <label>Date:</label>
-                    <input required type="date" value={date} onChange={(event) => setDate(event.target.value)}/>
-                    <label>Time:</label>
-                    <input required type="time" value={time} onChange={(event) => setTime(event.target.value)}/>
-                    <label>Location</label>
-                    <input required type="text" value={location} onChange={(event) => setLocation(event.target.value)}/>
-                    <button type="submit">Save Edits</button>
-                    <button type="button" onClick={() => {setEditMode(false)}}>Close</button>
-                </fieldset>
-            </form>
-            }
-        </div>
+                : <div></div>
+                }
+                <div>
+                    <h2 style={{color: "#d9b44a"}}>RSVP Status:</h2>
+                    {attendees.map((attendee) =>
+                    <div key={attendee.name} className="attendee-card"> 
+                        <p>{attendee.name}: {attendee.status}</p>
+                    </div>
+                    )}
+                    <button onClick={() => setCurrentEvent(null)}>Close</button>
+                </div>
+                </div>
+                </>    
+                :
+                <>
+                <h2>Edit Event Details</h2>
+                <form className="form-card" onSubmit={updateCalendarEvent}>
+                    <fieldset>
+                        <legend>Edit Event</legend>
+                        <label>Title</label>
+                        <input required type="text" value={title} onChange={(event) => setTitle(event.target.value)}/>
+                        <label>Description:</label>
+                        <textarea value={description} onChange={(event) => setDescription(event.target.value)}/>
+                        <label>Date:</label>
+                        <input required type="date" value={date} onChange={(event) => setDate(event.target.value)}/>
+                        <label>Time:</label>
+                        <input required type="time" value={time} onChange={(event) => setTime(event.target.value)}/>
+                        <label>Location</label>
+                        <input required type="text" value={location} onChange={(event) => setLocation(event.target.value)}/>
+                        <button type="submit">Save Edits</button>
+                        <button type="button" onClick={() => {setEditMode(false)}}>Close</button>
+                    </fieldset>
+                </form>
+                </>
+                }
+        </>     
     )
 }
 

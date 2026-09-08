@@ -67,19 +67,22 @@ function SignUp( {activateSignUp}: SignUpProps){
     }
 
     return(
-        <form className="form-card" onSubmit={handleSignUp}>
-            <fieldset>
-                <legend>Sign Up</legend>
-                <label htmlFor="name">Name:</label>
-                <input required type="text" id="name"  value={name} onChange={(e) => {setName(e.target.value)}} />
-                <label htmlFor="email">Email:</label>
-                <input required type="email" id="email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
-                <label htmlFor="password">Password:</label>
-                <input required type="password" id="password"  value={password} onChange={(e) => {setPassword(e.target.value)}} />
-                <button type="submit">Submit</button>
-                {message && <p>{message}</p>}
-            </fieldset>
-        </form>
+        <div>
+            <form className="form-card sign-up" onSubmit={handleSignUp}>
+                <fieldset>
+                    <legend>Sign Up</legend>
+                    <label htmlFor="name">Name:</label>
+                    <input required type="text" id="name"  value={name} onChange={(e) => {setName(e.target.value)}} />
+                    <label htmlFor="email">Email:</label>
+                    <input required type="email" id="email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
+                    <label htmlFor="password">Password:</label>
+                    <input required type="password" id="password"  value={password} onChange={(e) => {setPassword(e.target.value)}} />
+                    <button type="submit">Submit</button>
+                    <button type="button" onClick={activateSignUp}>Cancel</button>
+                    {message && <p>{message}</p>}
+                </fieldset>
+            </form>
+        </div>
     )
 }
 

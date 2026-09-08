@@ -8,7 +8,7 @@
     },
     {
       "id": 2,
-      "name": "Thomas",
+      "name": "Tom",
       "email": "Thomas@fake.com",
       "password": "password2"
     },
@@ -44,7 +44,7 @@
       "description": "A house warming party",
       "date": "2026-12-01",
       "time": "18:00",
-      "location": "Aaron's House",
+      "location": "Aaron's Home",
       "id": 5
     },
     {
@@ -73,6 +73,15 @@
       "time": "20:00",
       "location": "My House",
       "id": 8
+    },
+    {
+      "creatorId": 2,
+      "title": "MTG Tournament ",
+      "description": "Magic The Gathering",
+      "date": "2027-04-01",
+      "time": "17:00",
+      "location": "Tom's House",
+      "id": 9
     }
   ],
   "invitations": [
@@ -92,12 +101,12 @@
       "id": 4,
       "eventId": 3,
       "userId": 1,
-      "status": "accepted"
+      "status": "declined"
     },
     {
       "eventId": 5,
       "userId": 2,
-      "status": "accepted",
+      "status": "declined",
       "id": 5
     },
     {
@@ -111,6 +120,18 @@
       "userId": 2,
       "status": "accepted",
       "id": 7
+    },
+    {
+      "eventId": 9,
+      "userId": 3,
+      "status": "pending",
+      "id": 8
+    },
+    {
+      "eventId": 9,
+      "userId": 1,
+      "status": "accepted",
+      "id": 9
     }
   ]
 }

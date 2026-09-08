@@ -5,8 +5,8 @@ type LogOutProps = {
 function LogOut( { switchLogin }: LogOutProps){
 
     return(
-        <div className = "logout-container">
-            <button type="button" onClick={switchLogin}> Log Out </button>
+        <div className="logout-container">
+            <button className="logout" type="button" onClick={switchLogin}> Log Out </button>
         </div>
     )
 }
