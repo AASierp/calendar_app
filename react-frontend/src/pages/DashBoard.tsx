@@ -25,11 +25,11 @@ const [currentEvent, setCurrentEvent] = useState<CalendarEvent | null>(null)
     setCurrentEvent(event)
  }
 
-
     return (
         <>
             <div className="heading-container">
                 <h1>{user.name}'s Dashboard</h1>
+                <hr />
             </div>
             <div className="dashboard-container">
                 
