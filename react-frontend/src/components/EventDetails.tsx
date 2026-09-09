@@ -129,37 +129,37 @@ function EventDetails({currentEvent, setCurrentEvent, refreshState, refresh, use
         <>
             {!editMode ?
             <>
-            <h2>Event Details:</h2>
-            <div className="event-card">
-                <p style={{color: "#d9b44a"}}>Event: {currentEvent.title}</p>
-                <p>Activity: {currentEvent.description}</p>
-                <p>Date: {currentEvent.date}</p>
-                <p>time: {currentEvent.time}</p>
-                <p>Location: {currentEvent.location}</p>
-                {user.id === currentEvent.creatorId ?
-                <div>
-                    <button onClick={() => setEditMode(true)}>Edit Mode</button>
-                    <button onClick={()=> {deleteThisEvent()}}>Delete</button>
-                    
-                    <select value = {invitee} onChange={(e) => setInvitee(e.target.value)}>
-                        <option value="" disabled>Select User to Invite</option>
-                        {users.map((user: User) => <option key={user.id} value={user.id}>{user.name}</option>)}
-                    </select>
-                    <button onClick={sendInvitation}>Invite</button>
-                    {message && <p>{message}</p>}
-                </div>
-                : <div></div>
-                }
-                <div>
-                    <h2 style={{color: "#d9b44a"}}>RSVP Status:</h2>
-                    {attendees.map((attendee) =>
-                    <div key={attendee.name} className="attendee-card"> 
-                        <p>{attendee.name}: {attendee.status}</p>
+                <h2>Event Details:</h2>
+                <div className="event-card">
+                    <p style={{color: "#d9b44a"}}>Event: {currentEvent.title}</p>
+                    <p>Activity: {currentEvent.description}</p>
+                    <p>Date: {currentEvent.date}</p>
+                    <p>time: {currentEvent.time}</p>
+                    <p>Location: {currentEvent.location}</p>
+                    {user.id === currentEvent.creatorId ?
+                    <div>
+                        <button onClick={() => setEditMode(true)}>Edit Mode</button>
+                        <button onClick={()=> {deleteThisEvent()}}>Delete</button>
+                        
+                        <select value = {invitee} onChange={(e) => setInvitee(e.target.value)}>
+                            <option value="" disabled>Select User to Invite</option>
+                            {users.map((user: User) => <option key={user.id} value={user.id}>{user.name}</option>)}
+                        </select>
+                        <button onClick={sendInvitation}>Invite</button>
+                        {message && <p>{message}</p>}
                     </div>
-                    )}
-                    <button onClick={() => setCurrentEvent(null)}>Close</button>
-                </div>
-                </div>
+                    : <div></div>
+                    }
+                    <div>
+                        <h2 style={{color: "#d9b44a"}}>RSVP Status:</h2>
+                        {attendees.map((attendee) =>
+                        <div key={attendee.name} className="attendee-card"> 
+                            <p>{attendee.name}: {attendee.status}</p>
+                        </div>
+                        )}
+                        <button onClick={() => setCurrentEvent(null)}>Close</button>
+                    </div>
+                    </div>
                 </>    
                 :
                 <>

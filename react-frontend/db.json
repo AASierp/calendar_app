@@ -23,6 +23,12 @@
       "email": "aaronsierp@gmail.com",
       "password": "password",
       "id": 4
+    },
+    {
+      "name": "Caleb Smith",
+      "email": "Caleb@fake.com",
+      "password": "password4",
+      "id": 5
     }
   ],
   "events": [
