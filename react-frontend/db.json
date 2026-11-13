@@ -29,6 +29,24 @@
       "email": "Caleb@fake.com",
       "password": "password4",
       "id": 5
+    },
+    {
+      "name": "jeff thao",
+      "email": "jeff@fake.com",
+      "password": "password5",
+      "id": 6
+    },
+    {
+      "name": "AARON",
+      "email": "Aaron@gmail.co",
+      "password": "password1",
+      "id": 7
+    },
+    {
+      "name": "bob",
+      "email": "bob@example.com",
+      "password": "password3",
+      "id": 8
     }
   ],
   "events": [
@@ -94,6 +112,15 @@
       "time": "17:00",
       "location": "Tom's House",
       "id": 9
+    },
+    {
+      "creatorId": 6,
+      "title": "Party",
+      "description": "Party at jeffs pad",
+      "date": "0026-09-15",
+      "time": "18:00",
+      "location": "jeffs house",
+      "id": 10
     }
   ],
   "invitations": [
@@ -144,6 +171,24 @@
       "userId": 1,
       "status": "accepted",
       "id": 9
+    },
+    {
+      "eventId": 10,
+      "userId": 1,
+      "status": "accepted",
+      "id": 10
+    },
+    {
+      "eventId": 10,
+      "userId": 3,
+      "status": "pending",
+      "id": 11
+    },
+    {
+      "eventId": 10,
+      "userId": 5,
+      "status": "pending",
+      "id": 12
     }
   ]
 }
